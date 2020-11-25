@@ -7,9 +7,9 @@ namespace Nau.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var example = new CustomString(new int[] { 1, 2, 3, 4, 5 });
-            var size = example.Size();
-            Console.WriteLine("CustomString size: " + size);
+            var example = new CustomString(new char[] { '1', '2', '3', '4', '5' });
+            var length = example.Length();
+            Console.WriteLine("CustomString length: " + length);
 
             PrintCustoStringValue(example);
 

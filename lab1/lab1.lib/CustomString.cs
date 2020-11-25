@@ -4,44 +4,56 @@ namespace Nau.Lib
 {
     public class CustomString
     {
+        private char[] characters;
 
-        private int[] value;
-
-        public CustomString(int[] value)
+        public CustomString(char[] characters)
         {
-            this.value = value;
+            if (!ValidateInput(characters))
+            {
+                throw new ArgumentException();
+            }
+            this.characters = characters;
         }
 
-        public int[] Value()
+        public char[] Value()
         {
-            return value;
+            return characters;
         }
 
-        public int Size()
+        public int Length()
         {
-            return value.Length;
+            return characters.Length;
         }
 
         ~CustomString()
         {
-            this.value = null;
-            Console.WriteLine($"The {ToString()} destructor is executing.");
+            this.characters = null;
         }
 
         public void Reverse()
         {
-            int temp;
+            char temp;
             int start = 0;
-            int end = Size() - 1;
+            int end = Length() - 1;
 
             while (start < end)
             {
-                temp = value[start];
-                value[start] = value[end];
-                value[end] = temp;
+                temp = characters[start];
+                characters[start] = characters[end];
+                characters[end] = temp;
                 start++;
                 end--;
             }
+        }
+
+        private bool ValidateInput(char[] characters)
+        {
+            foreach (char c in characters)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
         }
 
     }
